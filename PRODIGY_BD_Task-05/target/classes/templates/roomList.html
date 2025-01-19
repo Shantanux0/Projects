@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Room List</title>
+</head>
+<body>
+<h1>Room List</h1>
+
+<!-- Display rooms in a table -->
+<table>
+    <thead>
+    <tr>
+        <th>Room ID</th>
+        <th>Room Name</th>
+        <th>Price</th>
+        <th>Available</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="room : ${roomListPage.content}">
+        <td th:text="${room.id}"></td>
+        <td th:text="${room.name}"></td>
+        <td th:text="${room.price}"></td>
+        <td th:text="${room.available ? 'Yes' : 'No'}"></td>
+        <td><a th:href="@{/roomDetails?rid={rid}(rid=${room.id})}">View Details</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Pagination links -->
+<div>
+        <span th:if="${roomListPage.hasPrevious()}">
+            <a th:href="@{/roomList.html?page=0}">First</a>
+        </span>
+    <span th:if="${roomListPage.hasPrevious()}">
+            <a th:href="@{/roomList.html?page=${roomListPage.number - 1}}">Previous</a>
+        </span>
+    <span th:if="${roomListPage.hasNext()}">
+            <a th:href="@{/roomList.html?page=${roomListPage.number + 1}}">Next</a>
+        </span>
+    <span th:if="${roomListPage.hasNext()}">
+            <a th:href="@{/roomList.html?page=${roomListPage.totalPages - 1}}">Last</a>
+        </span>
+</div>
+</body>
+</html>

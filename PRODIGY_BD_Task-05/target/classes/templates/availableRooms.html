@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Available Rooms</title>
+</head>
+<body>
+<h1>Available Rooms</h1>
+
+<!-- Display available rooms -->
+<table>
+    <thead>
+    <tr>
+        <th>Room Name</th>
+        <th>Price</th>
+        <th>Available</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="room : ${roomListPage.content}">
+        <td th:text="${room.name}"></td>
+        <td th:text="${room.price}"></td>
+        <td th:text="${room.available ? 'Yes' : 'No'}"></td>
+        <td>
+            <a th:href="@{/reservationFormUSR.html?rid={rid}(rid=${room.id})}">Reserve</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/roomList.html">Back to Room List</a>
+</body>
+</html>
