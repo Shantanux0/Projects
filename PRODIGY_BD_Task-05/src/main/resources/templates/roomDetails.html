@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Room Details</title>
+</head>
+<body>
+<h1>Room Details</h1>
+
+<!-- Display room details -->
+<div>
+    <p><strong>Room ID:</strong> <span th:text="${room.id}"></span></p>
+    <p><strong>Room Name:</strong> <span th:text="${room.name}"></span></p>
+    <p><strong>Price:</strong> <span th:text="${room.price}"></span></p>
+    <p><strong>Available:</strong> <span th:text="${room.available ? 'Yes' : 'No'}"></span></p>
+</div>
+
+<a href="/roomList.html">Back to Room List</a>
+</body>
+</html>
